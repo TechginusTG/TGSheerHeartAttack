@@ -16,8 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="32dp"
             android:layout_marginBottom="30dp"
-            android:background="#2C5B5A"
-            >
+            android:background="#2C5B5A">
 
             <TextView
                 android:layout_gravity="center"
@@ -35,19 +34,19 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="#DC143C"
-            android:text="disconnected"
-            />
+            android:text="disconnected" />
+
         <FrameLayout
             android:layout_width="200dp"
             android:layout_height="200dp"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:layout_marginBottom="50dp">
 
             <ImageView
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:src="@drawable/skull"
-                />
+                android:src="@drawable/skull" />
 
             <Button
                 android:id="@+id/connect"
@@ -58,25 +57,26 @@
         </FrameLayout>
 
         <Button
+            android:id="@+id/sha"
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="#363636"
-            android:text="이쪽을 봐라"/>
+            android:text="이쪽을 봐라"
+            android:layout_marginBottom="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="horizontal"
-            >
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:orientation="horizontal"
+                android:layout_marginStart="24dp"
                 android:layout_marginEnd="30dp">
 
                 <Button
@@ -85,11 +85,9 @@
                     android:layout_height="wrap_content"
                     android:layout_width="wrap_content"
                     android:text="←"
-                    android:layout_marginEnd="8dp"
-                    tools:layout_editor_absoluteX="16dp"
-                    tools:layout_editor_absoluteY="45dp"
-                    />
-                <Button 
+                    android:layout_marginEnd="8dp" />
+
+                <Button
                     style="@style/Widget.App.Button.Controller"
                     android:id="@+id/turn_right_btn"
                     android:layout_width="wrap_content"
@@ -97,11 +95,16 @@
                     android:text="→" />
             </LinearLayout>
 
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:layout_marginEnd="36dp">
 
                 <Button
                     style="@style/Widget.App.Button.Controller"
@@ -109,12 +112,11 @@
                     android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="↑"
-                    tools:layout_editor_absoluteX="159dp"
-                    tools:layout_editor_absoluteY="21dp" />
+                    android:text="↑" />
+
                 <Button
                     style="@style/Widget.App.Button.Controller"
-                    android:id="@+id/stop_btn"
+                    android:id="@+id/back_btn"
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -126,6 +128,20 @@
         </LinearLayout>
 
         <TextView
+            android:layout_marginTop="60dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:text="가로화면을 권장함"
+            android:layout_gravity="center"
+            android:textColor="#DEDCF9" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#363636"
@@ -134,7 +150,6 @@
             android:textColor="#B34747"
             tools:ignore="TextContrastCheck" />
     </LinearLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -63,6 +63,7 @@
         </FrameLayout>
 
         <Button
+            android:id="@+id/sha"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -74,12 +75,12 @@
         android:id="@+id/left_right_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="24dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="@+id/skull_container"
-        app:layout_constraintEnd_toStartOf="@+id/skull_container"
-        app:layout_constraintTop_toTopOf="@+id/skull_container">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/turn_left_btn"
@@ -101,11 +102,11 @@
         android:id="@+id/up_down_buttons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="36dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@+id/skull_container"
-        app:layout_constraintStart_toEndOf="@+id/skull_container"
-        app:layout_constraintTop_toTopOf="@+id/skull_container">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <Button
             android:id="@+id/go_btn"
@@ -116,7 +117,7 @@
             android:text="↑" />
 
         <Button
-            android:id="@+id/stop_btn"
+            android:id="@+id/back_btn"
             style="@style/Widget.App.Button.Controller"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
