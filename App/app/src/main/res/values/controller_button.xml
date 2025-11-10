@@ -3,7 +3,7 @@
 
     <style name="Widget.App.Button.Controller" parent="Widget.MaterialComponents.Button">
         <item name="android:textColor">@color/black</item>
-        <item name="android:backgroundTint">#FDFFFF</item>
+        <item name="android:backgroundTint">@color/controller_button_tint</item>
         <item name="android:fontFamily">@font/noto_sans_bold</item>
         <item name="android:textSize">48sp</item>
     </style>

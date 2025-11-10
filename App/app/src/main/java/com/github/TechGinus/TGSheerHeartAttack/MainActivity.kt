@@ -11,7 +11,7 @@ import android.view.View
 
 class MainActivity : AppCompatActivity() {
 
-    private val serialBluetooth = SerialBluetooth()
+    private lateinit var serialBluetooth: SerialBluetooth
     private lateinit var player: MediaPlayer
     private var isPlaying = false
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,23 +19,14 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContentView(R.layout.activity_main)
 
+        serialBluetooth = SerialBluetooth(this)
+
         val windowInsetsController = WindowCompat.getInsetsController(window, window.decorView)
         windowInsetsController?.let { controller ->
             controller.hide(WindowInsetsCompat.Type.systemBars())
             controller.systemBarsBehavior =
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         }
-
-        val connectBtn: Button = findViewById(R.id.connect)
-
-        connectBtn.setOnClickListener { view -> serialBluetooth.handleConnect(view) }
-
-
-
-
-
-
-
 
         player = MediaPlayer.create(this, R.raw.kocchi_wo_miro)
         player.setOnCompletionListener {
@@ -47,6 +38,8 @@ class MainActivity : AppCompatActivity() {
         playBtn.setOnClickListener {
             clickedPlayBtn()
         }
+
+        serialBluetooth.set_listener()
     }
 
     fun clickedPlayBtn() {
