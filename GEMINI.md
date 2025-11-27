@@ -15,9 +15,19 @@ The Android application acts as a remote controller, sending commands via Blueto
     *   `App/app/src/main/res/raw/kocchi_wo_miro.mp3`: The sound file played by the app when the central skull button is pressed.
 
 *   `Arduino/SheerHeartAttack/SheerHeartAttack.ino`: The Arduino sketch for the ESP32. It receives commands from the Android app to control motors for movement.
-    *   **Manual Mode:** Responds to commands from the app (`F`, `B`, `L`, `R`, `S`).
-    *   **Automatic Mode:** A planned feature where it will use a thermal sensor to seek out heat sources. The basic structure for this mode is in place.
-    *   It defines placeholder pins for a motor driver, a servo, a thermal sensor, and a sound module.
+    *   **Manual Mode:** Responds to commands from the app.
+        *   `F`: Move forward
+        *   `B`: Move backward
+        *   `L`: Rotate counter-clockwise
+        *   `R`: Rotate clockwise
+        *   `S`: Stop all movement
+        *   `K`: Play "Kocchi wo miro" sound (Note: The Android app currently plays this sound locally and does not send the 'K' command).
+    *   **Automatic Mode:** A planned feature where it will use a thermal sensor to seek out heat sources. The basic structure for this mode is in place. It can be enabled by sending the `A` command. In this mode, the robot will rotate to scan for heat.
+    *   It defines placeholder pins for a motor driver, a thermal sensor, and a sound module.
+
+## Assets
+
+*   `TGSHA.frames/`: This directory contains a sequence of PNG images that appear to be animation frames. These are not currently used in the application.
 
 ## Building and Running
 
@@ -30,10 +40,14 @@ The Android application acts as a remote controller, sending commands via Blueto
 ### Arduino
 
 1.  Open `Arduino/SheerHeartAttack/SheerHeartAttack.ino` in the Arduino IDE.
-2.  **Crucially, you must update the placeholder pin numbers (`#define`) at the top of the file to match the actual wiring of your components (motor driver, servo, etc.).**
+2.  **Crucially, you must update the placeholder pin numbers (`#define`) at the top of the file to match the actual wiring of your components (motor driver, etc.).**
 3.  Select your ESP32 board and port.
 4.  Upload the sketch.
 
 ## Development Conventions
 
-The project is in a functional state but still under development. The Android app is written in Kotlin. The Arduino sketch is C++/Arduino language.
+The project is in a functional state but still under development.
+
+*   **Android App:** Written in Kotlin, following modern Android development practices. It uses `lifecycleScope` for coroutines and `StateFlow` to manage the connection state.
+*   **Arduino Sketch:** Written in C++/Arduino language for the ESP32.
+*   **Bluetooth Communication:** The app and Arduino communicate via Bluetooth SPP (Serial Port Profile). Commands are single characters.

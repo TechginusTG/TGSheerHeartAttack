@@ -1,5 +1,4 @@
 #include <BluetoothSerial.h>
-#include <Servo.h>
 
 // --- 나중에 실제 핀 번호로 수정할 부분 ---
 // 모터 드라이버 (L298N 또는 유사 드라이버 기준)
@@ -7,9 +6,6 @@
 #define MOTOR_A_IN2 0 // 왼쪽 바퀴 역방향
 #define MOTOR_B_IN1 0 // 오른쪽 바퀴 정방향
 #define MOTOR_B_IN2 0 // 오른쪽 바퀴 역방향
-
-// 머리 부분 회전을 위한 서보 모터
-#define SERVO_PIN 0
 
 // 열 감지 센서 (예: MLX90614 또는 AMG8833)
 #define THERMAL_SENSOR_PIN 0 // 혹은 I2C 핀 (SDA, SCL)
@@ -19,7 +15,6 @@
 
 // --- 전역 변수 ---
 BluetoothSerial SerialBT;
-Servo headServo;
 
 // 작동 모드 관리 (true: 자동 모드, false: 수동 제어 모드)
 bool isAutoMode = true; 
@@ -130,7 +125,6 @@ void automatic_mode() {
     
   } else {
     // 열이 감지되지 않으면 제자리에서 회전하며 스캔합니다.
-    // headServo.write(angle); 등을 사용하여 구현
     // 여기서는 바퀴를 이용한 느린 회전으로 대체합니다.
     rotate_clockwise();
     delay(100); // 회전 속도 조절
@@ -150,9 +144,6 @@ void setup() {
   pinMode(MOTOR_A_IN2, OUTPUT);
   pinMode(MOTOR_B_IN1, OUTPUT);
   pinMode(MOTOR_B_IN2, OUTPUT);
-  
-  // 서보 모터 초기화
-  headServo.attach(SERVO_PIN);
   
   // 사운드 모듈 핀 설정
   pinMode(SOUND_TRIGGER_PIN, OUTPUT);
